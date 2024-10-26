@@ -1,0 +1,47 @@
+name: homework-analysis-system
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile.backend
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./app.py:/app/app.py
+      - ./results:/app/results
+    environment:
+      - PYTHONUNBUFFERED=1
+    networks:
+      - homework-network
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile.frontend
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./src:/app/src
+      - ./public:/app/public
+      - ./package.json:/app/package.json
+      - ./tsconfig.json:/app/tsconfig.json
+      - ./tailwind.config.js:/app/tailwind.config.js
+      - ./.env:/app/.env
+      - /app/node_modules
+    environment:
+      - REACT_APP_API_URL=http://localhost:8000
+      - SKIP_PREFLIGHT_CHECK=true
+      - TSC_COMPILE_ON_ERROR=true
+      - CHOKIDAR_USEPOLLING=true
+      - WATCHPACK_POLLING=true
+    depends_on:
+      - backend
+    networks:
+      - homework-network
+    restart: unless-stopped
+
+networks:
+  homework-network:
+    driver: bridge

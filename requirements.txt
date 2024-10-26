@@ -1,0 +1,54 @@
+# Core ML/CV dependencies
+opencv-python>=4.10.0
+numpy>=2.0.2
+pytesseract>=0.3.13
+Pillow>=10.0.0
+torch>=2.5.0
+transformers>=4.46.0
+easyocr>=1.7.2
+spacy>=3.8.2
+langdetect>=1.0.9
+
+# Web framework and utilities
+fastapi>=0.115.3
+uvicorn>=0.32.0
+python-multipart>=0.0.12
+pydantic>=2.0.0
+starlette>=0.41.0
+
+# Additional utilities
+python-dateutil>=2.9.0
+sentencepiece>=0.2.0
+safetensors>=0.4.5
+tokenizers>=0.20.1
+sympy>=1.13.1
+
+# Image processing
+torchvision>=0.20.0
+opencv-python-headless>=4.10.0
+scikit-image>=0.24.0
+python-bidi>=0.6.3
+Shapely>=2.0.6
+pyclipper>=1.3.0
+ninja>=1.11.1
+
+# NLP dependencies
+spacy-legacy>=3.0.12
+spacy-loggers>=1.0.5
+thinc>=8.3.2
+blis>=1.0.1
+catalogue>=2.0.10
+preshed>=3.0.9
+wasabi>=1.1.3
+srsly>=2.4.8
+murmurhash>=1.0.10
+cymem>=2.0.8
+typer>=0.12.5
+
+# Compression and file handling
+cloudpathlib>=0.20.0
+smart-open>=7.0.5
+wrapt>=1.16.0
+
+# Required spaCy model - install separately with:
+# python -m spacy download en_core_web_sm

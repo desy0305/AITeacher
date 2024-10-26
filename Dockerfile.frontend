@@ -1,0 +1,23 @@
+FROM node:16-alpine
+
+# Set working directory
+WORKDIR /app
+
+# Install dependencies first
+COPY package*.json ./
+RUN npm install
+
+# Copy application code
+COPY . .
+
+# Create necessary directories
+RUN mkdir -p src/components/ui
+
+# Set environment variables
+ENV REACT_APP_API_URL=http://localhost:8000
+ENV SKIP_PREFLIGHT_CHECK=true
+ENV TSC_COMPILE_ON_ERROR=true
+ENV NODE_ENV=development
+
+# Start the development server
+CMD ["npm", "start"]
